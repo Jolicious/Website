@@ -2,7 +2,7 @@
 title = 'HTB Sau Writeup'
 date = 2023-08-15T07:07:07+01:00
 author = 'Jolicious'
-draft = true
+draft = false
 +++
 
 # Machine Name - Sau

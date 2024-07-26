@@ -2,7 +2,7 @@
 title = 'Writeup of Imaginary CTF 2024'
 date = 2024-07-25T07:07:07+01:00
 author = 'Jolicious'
-draft = true
+draft = false
 tag = ['CTF', 'ImaginaryCTF']
 +++
 

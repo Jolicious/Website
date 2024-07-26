@@ -1,0 +1,267 @@
+<!doctype html><html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="generator" content="Qubt theme for Hugo" />
+
+
+
+<title>Jolicious</title>
+<meta name="title" content="Jolicious" />
+
+
+
+  <meta name="author" content="Jolicious" />
+
+
+
+
+  <meta name="description" content="Demo site build with Qubt &amp; Hugo" />
+
+
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/css/main.bundle.min.a22730fdd3cc07d9c93ca48acba7923b2b14510e1c925c0caccb3049713e7098d3aa77911bfa9524926f8d7242e7097ee57f8048260d44f2938f4ec5f82a2373.css" integrity="sha512-oicw/dPMB9nJPKSKy6eSOysUUQ4cklwMrMswSXE&#43;cJjTqneRG/qVJJJvjXJC5wl&#43;5X&#43;ASCYNRPKTj07F&#43;Cojcw==" />
+
+
+
+
+
+
+
+
+
+<script defer src="/js/main.bundle.min.4657c962c90bb42241e3db9c00332ac44a2ff6a901654b8248b4e2f4b586571fd2aa672dcadf728d6f2135b0ea6088f21d1cf5302b4cae8557e0593f70081d72.js" integrity="sha512-RlfJYskLtCJB49ucADMqxEov9qkBZUuCSLTi9LWGVx/Sqmctyt9yjW8hNbDqYIjyHRz1MCtMroVX4Fk/cAgdcg=="></script>
+
+
+
+
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon_hu82d3234a35a169add3bd911f4a5689fe_109264_180x180_resize_box_3.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icon_hu82d3234a35a169add3bd911f4a5689fe_109264_32x32_resize_box_3.png" />
+
+
+
+<meta property="og:url" content="http://localhost:1313/ctf/sau/">
+  <meta property="og:site_name" content="Jolicious">
+  <meta property="og:title" content="HTB Sau Writeup">
+  <meta property="og:description" content="Machine Name - Sau Machine Creater - sau123 Writeup by Jolicious Bottle Enumeration Nmap nmap -sS -sV -sC -vv -oA nmap/sau 10.10.11.224 An initial Nmap scan reveal 3 ports open. SSH on port 22, http on port 80 which looks like it is filtered, and it looks like http on port 55555 which is an unusual port for http.
+HTTP Visiting the website on port 55555. We are presented with a page to create new basket to inspect HTTP requests.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="ctf">
+    <meta property="article:published_time" content="2023-08-15T07:07:07+01:00">
+    <meta property="article:modified_time" content="2023-08-15T07:07:07+01:00">
+    <meta property="og:image" content="http://localhost:1313/thumbnail.jpeg">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/thumbnail.jpeg">
+  <meta name="twitter:title" content="HTB Sau Writeup">
+  <meta name="twitter:description" content="Machine Name - Sau Machine Creater - sau123 Writeup by Jolicious Bottle Enumeration Nmap nmap -sS -sV -sC -vv -oA nmap/sau 10.10.11.224 An initial Nmap scan reveal 3 ports open. SSH on port 22, http on port 80 which looks like it is filtered, and it looks like http on port 55555 which is an unusual port for http.
+HTTP Visiting the website on port 55555. We are presented with a page to create new basket to inspect HTTP requests.">
+
+
+<script>
+  
+  if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+</script>
+
+  </head>
+  <body class="flex h-screen flex-col justify-between bg-neutral-100 dark:bg-neutral-800">
+    <div>
+      <header class="sticky top-0 z-10 bg-neutral-100 dark:bg-neutral-800">
+        
+
+
+
+<section class="mx-auto flex max-w-screen-xl items-center justify-between p-4">
+  <a href="http://localhost:1313/" class="flex items-center space-x-3">
+    
+    <span class="self-center whitespace-nowrap text-2xl font-semibold text-slate-700 dark:text-slate-400">
+      Jolicious
+    </span>
+  </a>
+  <div class="flex flex-row space-x-8">
+    <nav class="hidden space-x-8 text-xl md:block" aria-label="main">
+      
+        <a href="/" class="px-3 py-2 text-slate-700 hover:text-indigo-500 md:p-0 dark:text-slate-400">
+          Home
+        </a>
+      
+        <a href="/blog/" class="px-3 py-2 text-slate-700 hover:text-indigo-500 md:p-0 dark:text-slate-400">
+          Blog
+        </a>
+      
+        <a href="/ctf/" class="px-3 py-2 text-slate-700 hover:text-indigo-500 md:p-0 dark:text-slate-400">
+          CTF
+        </a>
+      
+        <a href="/about/" class="px-3 py-2 text-slate-700 hover:text-indigo-500 md:p-0 dark:text-slate-400">
+          About
+        </a>
+      
+    </nav>
+    <button id="theme-toggle" type="button" class="rounded-lg text-sm text-slate-700 hover:text-indigo-500 dark:text-slate-400" aria-label="theme-switcher">
+      <svg id="theme-toggle-dark-icon" class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+      </svg>
+      <svg id="theme-toggle-light-icon" class="hidden h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+          fill-rule="evenodd"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <button id="hamburger-button" class="relative h-8 w-8 cursor-pointer text-3xl md:hidden" aria-label="hamburger-button">
+      <div
+        class="absolute top-4 -mt-0.5 h-[3px] w-8 rounded bg-slate-700 transition-all duration-500 before:absolute before:h-[3px] before:w-8 before:-translate-x-4 before:-translate-y-2.5 before:rounded before:bg-slate-700 before:transition-all before:duration-500 before:content-[''] after:absolute after:h-[3px] after:w-8 after:-translate-x-4 after:translate-y-2.5 after:rounded after:bg-slate-700 after:transition-all after:duration-500 after:content-[''] dark:bg-slate-400 before:dark:bg-slate-400 after:dark:bg-slate-400"></div>
+    </button>
+  </div>
+</section>
+<section id="mobile-menu" class="absolute hidden w-full origin-top animate-open-menu flex-col justify-center bg-neutral-100 text-4xl dark:bg-neutral-800">
+  <nav class="flex min-h-screen flex-col items-center py-8" aria-label="mobile">
+    
+      <a href="/" class="px-3 py-2 text-center text-slate-700 hover:text-indigo-500 md:p-0 dark:text-slate-400">
+        Home
+      </a>
+    
+      <a href="/blog/" class="px-3 py-2 text-center text-slate-700 hover:text-indigo-500 md:p-0 dark:text-slate-400">
+        Blog
+      </a>
+    
+      <a href="/ctf/" class="px-3 py-2 text-center text-slate-700 hover:text-indigo-500 md:p-0 dark:text-slate-400">
+        CTF
+      </a>
+    
+      <a href="/about/" class="px-3 py-2 text-center text-slate-700 hover:text-indigo-500 md:p-0 dark:text-slate-400">
+        About
+      </a>
+    
+  </nav>
+</section>
+
+      </header>
+      <main>
+        
+  
+  
+  
+  
+
+
+  <div class="justify-left mx-auto mt-8 flex max-w-screen-md px-4">
+    <article>
+      <h1 class="text-4xl font-extrabold text-slate-700 dark:text-slate-200">
+        HTB Sau Writeup
+      </h1>
+      <h2 class="mt-4 text-2xl text-slate-500 dark:text-slate-400">
+        
+      </h2>
+      <div class="mb-4 mt-2 text-sm text-slate-500 dark:text-slate-400">
+        Aug 15, 2023 - 3 minute read
+      </div>
+
+      
+
+
+      <span class="prose prose-slate break-words text-lg text-slate-700 dark:prose-invert prose-pre:max-w-[90vw] md:prose-pre:max-w-screen-md dark:text-slate-200">
+        <h1 id="machine-name---sau">Machine Name - Sau</h1>
+<p><img src="/sau/Sau.png" alt="Untitled"></p>
+<h2 id="machine-creater---sau123">Machine Creater - sau123</h2>
+<h2 id="writeup-by-jolicious-bottle">Writeup by Jolicious Bottle</h2>
+<h3 id="enumeration">Enumeration</h3>
+<h4 id="nmap">Nmap</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>nmap -sS -sV -sC -vv -oA nmap/sau 10.10.11.224
+</span></span></code></pre></div><p><img src="/sau/Sau1.png" alt="Untitled">
+An initial <code>Nmap</code> scan reveal 3 ports open. <code>SSH</code> on port <code>22</code>, <code>http</code> on port <code>80</code> which looks like it is filtered, and it looks like <code>http</code> on port <code>55555</code> which is an unusual port for <code>http</code>.</p>
+<h4 id="http">HTTP</h4>
+<p>Visiting the website on port <code>55555</code>. We are presented with a page to <code>create new basket to inspect HTTP requests</code>.
+<img src="/sau/Sau2.png" alt="Untitled">
+At the bottom of the page, it also leaks the version that is being used to create the website which is <code>1.2.1</code>, which could be use to further enumerate for vulnerabilities.</p>
+<p>When we create a new basket, we are given a token with it.
+<img src="/sau/Sau3.png" alt="Untitled"></p>
+<p>Looking at the page, we can see that there are a lot of functionalities.
+<img src="/sau/Sau4.png" alt="Untitled"></p>
+<p>Looking at each button, we find this one to be interesting.
+<img src="/sau/Sau5.png" alt="Untitled"></p>
+<p>Checking it, we can see that it is use to forward URL.
+<img src="/sau/Sau6.png" alt="Untitled"></p>
+<h3 id="foothold">Foothold</h3>
+<p>Lets examine the functionality, and see if we can access the filtered port.</p>
+<p><img src="/sau/Sau7.png" alt="Untitled"></p>
+<p>We add the localhost to the input and tick the <code>Proxy Response</code> in order to get response to the forward URL back to the client.</p>
+<p>Now if we visit the link <code>http://10.10.11.224:55555/tx5fuoi</code>, we can see that the URL has been forwarded and we are not able to access the page that was filtered
+<img src="/sau/Sau8.png" alt="Untitled"></p>
+<p>We can see that it leaks the version that is being used to create the website which is <code>0.53</code>.</p>
+<p>Searching for exploit with this information, we get an exploit.
+<img src="/sau/Sau9.png" alt="Untitled">
+Let&rsquo;s look at the first one.</p>
+<p>We can see that using curl they are able to get RCE (Remote Code Execution). We can also see that the option <code>-X</code> is not given. <code>curl</code> uses <code>GET</code> method in default.
+<img src="/sau/Sau10.png" alt="Untitled"></p>
+<p>So using that information lets try to exploit and get a reverse shell.</p>
+<p>We write the reverse in a file name <code>index.html</code>. We named it <code>index.html</code> as this is the default page that is searched if no name is provided. So we don&rsquo;t have to keep providing a file name to get reverse shell.
+<img src="/sau/Sau11.png" alt="Untitled"></p>
+<p>Now we open a python server as well as a listener for reverse shell.
+<img src="/sau/Sau12.png" alt="Untitled"></p>
+<p>We configure the settings as shown in the POC (Proof of Concept).
+<img src="/sau/Sau13.png" alt="Untitled"></p>
+<p>Now we reload the page.</p>
+<p>When we check the listener and python server, we can see that the page made a request to our server and we got a reverse shell back.
+<img src="/sau/Sau14.png" alt="Untitled"></p>
+<p>We are able to read <code>user.txt</code> file.
+<img src="/sau/Sau15.png" alt="Untitled"></p>
+<h3 id="privilege-escalation">Privilege Escalation</h3>
+<p>Lets see if the user has any <code>sudo</code> permissions.
+<img src="/sau/Sau16.png" alt="Untitled">
+The user has permissions to run <code>sudo</code> without the use of password. We can see that the user can run <code>/usr/bin/systemctl status trail.service</code> with <code>sudo</code> without any password.</p>
+<p>Let search if we can get root access using it.
+<img src="/sau/Sau17.png" alt="Untitled"></p>
+<p>We get a page that explain how to do it so lets follow it.</p>
+<p><img src="/sau/Sau18.png" alt="Untitled"></p>
+<p>We follow the steps and we are able to get root access.</p>
+<p><img src="/sau/Sau19.png" alt="Untitled">
+We are able to read root.txt.</p>
+<h3 id="references">References</h3>
+<p>RCE - <a href="https://huntr.dev/bounties/be3c5204-fbd9-448d-b97c-96a8d2941e87/">https://huntr.dev/bounties/be3c5204-fbd9-448d-b97c-96a8d2941e87/</a>
+Privilege Escalation - <a href="https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/sudo/sudo-systemctl-privilege-escalation/">https://exploit-notes.hdks.org/exploit/linux/privilege-escalation/sudo/sudo-systemctl-privilege-escalation/</a></p>
+
+      </span>
+    </article>
+  </div>
+
+      </main>
+    </div>
+    <footer>
+      <div class="flex flex-col justify-center p-10">
+  
+  <p class="text-center text-slate-700 dark:text-slate-400">
+    &copy;
+    2024
+    Jolicious
+  </p>
+
+  
+  
+  
+  
+  <p class="text-center text-sm text-slate-700 dark:text-slate-400">
+    Published with <a class="hover:underline hover:decoration-indigo-500 hover:text-indigo-500" href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a> & <a class="hover:underline hover:decoration-indigo-500 hover:text-indigo-500" href="https://github.com/chrede88/qubt" target="_blank" rel="noopener noreferrer">Qubt</a>
+  </p>
+</div>
+
+    </footer>
+  </body>
+</html>

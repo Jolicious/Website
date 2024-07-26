@@ -1,0 +1,28 @@
+############################
+## Author
+############################
+
+author:
+  name: "Jolicious"
+  image: avatar.jpg
+  greeting: "Exploring and enhancing web application security through the latest trends, techniques, and tools. :evergreen_tree:"
+  icon: ":computer:"
+
+############################
+## Links
+############################
+
+links:
+  - github: https://github.com/jolicious
+  - linkedin: https://www.linkedin.com/in/sushant-mali-a85444235/
+  - hackthebox: https://app.hackthebox.com/users/1011698
+  - discord: https://discordid.netlify.app/?id=770626414839201793
+
+###############################
+## OpenGraph & Twitter Cards
+###############################
+
+title: "Qubt Theme"
+description: "Demo site build with Qubt & Hugo"
+images:
+  - thumbnail.jpeg

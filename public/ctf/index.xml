@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CTFs on Jolicious</title>
+    <link>http://localhost:1313/ctf/</link>
+    <description>Recent content in CTFs on Jolicious</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 25 Jul 2024 07:07:07 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writeup of Imaginary CTF 2024</title>
+      <link>http://localhost:1313/ctf/imaginaryctf2024/</link>
+      <pubDate>Thu, 25 Jul 2024 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/ctf/imaginaryctf2024/</guid>
+      <description>ImaginaryCTF 2024 By Jolicious&#xA;Web Challenge Crystals (100pts)&#xA;We view the Webpage, seem like a normal static page.&#xA;Let’s look at the source code.&#xA;app.rb&#xA;require &amp;#39;sinatra&amp;#39; # Route for the index page get &amp;#39;/&amp;#39; do erb :index end It just routes us to the index page if we visit / .&#xA;Now let’s look at the file docker-compose.yml&#xA;version: &amp;#39;3.3&amp;#39; services: deployment: hostname: $FLAG build: . ports: - 10001:80 We can see that the flag is in the hostname.</description>
+    </item>
+    <item>
+      <title>HTB Sau Writeup</title>
+      <link>http://localhost:1313/ctf/sau/</link>
+      <pubDate>Tue, 15 Aug 2023 07:07:07 +0100</pubDate>
+      <guid>http://localhost:1313/ctf/sau/</guid>
+      <description>Machine Name - Sau Machine Creater - sau123 Writeup by Jolicious Bottle Enumeration Nmap nmap -sS -sV -sC -vv -oA nmap/sau 10.10.11.224 An initial Nmap scan reveal 3 ports open. SSH on port 22, http on port 80 which looks like it is filtered, and it looks like http on port 55555 which is an unusual port for http.&#xA;HTTP Visiting the website on port 55555. We are presented with a page to create new basket to inspect HTTP requests.</description>
+    </item>
+  </channel>
+</rss>
